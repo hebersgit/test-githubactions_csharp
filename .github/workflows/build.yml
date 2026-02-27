@@ -18,9 +18,9 @@ jobs:
     
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2
-    
+
     - name: Restore NuGet packages
-      run: nuget restore WindowsFormsApp1\WindowsFormsApp1.csproj
-    
+      run: nuget restore WindowsFormsApp1.slnx
+
     - name: Build Solution
-      run: msbuild WindowsFormsApp1\WindowsFormsApp1.csproj /p:Configuration=Release /p:Platform="Any CPU"
+      run: msbuild WindowsFormsApp1.slnx /p:Configuration=Release /p:Platform="Any CPU"
