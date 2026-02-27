@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
             if (int.TryParse(textBox1.Text, out int number1) && int.TryParse(textBox2.Text, out int number2))
             {
-                int result;
+                int result = 0;
                 string operation = comboBox1.SelectedItem?.ToString();
 
                 switch (operation)
@@ -38,15 +38,12 @@ namespace WindowsFormsApp1
                         result = number1 * number2;
                         break;
                     case "/":
-                        if (number2 != 0)
-                        {
-                            result = number1 / number2;
-                        }
-                        else
+                        if (number2 == 0)
                         {
                             errorProvider1.SetError(textBox2, "Divisor cannot be zero.");
                             return;
                         }
+                        result = number1 / number2;
                         break;
                     default:
                         errorProvider1.SetError(comboBox1, "Please select an operation.");
