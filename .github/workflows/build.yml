@@ -1,0 +1,26 @@
+name: Build Solution
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+    
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+    
+    - name: Restore NuGet packages
+      run: nuget restore WindowsFormsApp1\WindowsFormsApp1.csproj
+    
+    - name: Build Solution
+      run: msbuild WindowsFormsApp1\WindowsFormsApp1.csproj /p:Configuration=Release /p:Platform="Any CPU"
