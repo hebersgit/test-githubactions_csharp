@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
 
             if (int.TryParse(textBox1.Text, out int number1) && int.TryParse(textBox2.Text, out int number2))
             {
-                int result = 0;
+                int result;
                 string operation = comboBox1.SelectedItem?.ToString();
 
                 switch (operation)
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
                         }
                         else
                         {
-                            errorProvider1.SetError(textBox2, "Division by zero is not allowed.");
+                            errorProvider1.SetError(textBox2, "Divisor cannot be zero.");
                             return;
                         }
                         break;
